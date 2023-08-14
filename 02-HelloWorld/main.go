@@ -1,7 +1,15 @@
+// Package declaration
 package main
 
+//Import packages
 import "fmt"
 
+// main Functions
 func main() {
-	fmt.Println(" hello world !! ")
+	printHelloWorld()
+}
+
+// addional function to print hello world
+func printHelloWorld() {
+	fmt.Println(" Hello World !! ")
 }
