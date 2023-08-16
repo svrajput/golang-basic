@@ -23,7 +23,7 @@ func main() {
 
 	// For loop example
 	for j := 1; j <= 5; j++ {
-		fmt.Println(j)
+		fmt.Println(" for loop : ", j)
 	}
 
 	// If loop example
@@ -41,11 +41,11 @@ func main() {
 	switch i {
 
 	case 1:
-		fmt.Println(" one ")
+		fmt.Println(" One ")
 	case 5:
 		fmt.Println(" Five ")
 	default:
-		fmt.Println("It's ", i)
+		fmt.Println("Value matched in switch, It's ", i)
 	}
 
 }
