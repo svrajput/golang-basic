@@ -21,8 +21,8 @@ type Rectangle struct {
 }
 
 /* define a method for circle (implementation of Shape.area())*/
-func (circle Circle) area() float64 {
-	return math.Pi * circle.radius * circle.radius
+func (c Circle) area() float64 {
+	return math.Pi * c.radius * c.radius
 }
 
 /* define a method for rectangle (implementation of Shape.area())*/
