@@ -14,7 +14,7 @@ type Employee struct {
 func main() {
 
     //creating struct specifying field names
-    emp1 := Employee{
+    emp1 := Employee {
         firstName: "Sunil",
         age:       40,
         salary:    5000,
@@ -27,5 +27,5 @@ func main() {
     fmt.Println("Employee 1", emp1)
 
     fmt.Println("Employee 2", emp2)
-	
+
 }
