@@ -19,7 +19,7 @@ func main() {
 	// TODO: write goroutine with different variants for function call.
 
 	// goroutine function call
-	   go printString("called by goroutine-1 ")
+	go printString("called by goroutine-1 ")
 
 	// goroutine with anonymous function
 	go func() {
