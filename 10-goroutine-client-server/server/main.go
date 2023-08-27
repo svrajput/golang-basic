@@ -1,13 +1,30 @@
 package main
 
 import (
+	"fmt"
 	"io"
+	"log"
 	"net"
 	"time"
 )
 
 func main() {
-	// TODO: write server program to handle concurrent client connections.
+	//write server program to handle concurrent client connections.
+	listner, err := net.Listen("tcp", "localhost:8000")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for {
+		conn, err := listner.Accept()
+
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(" Server is started ... ")
+		go handleConn(conn)
+	}
 
 }
 
