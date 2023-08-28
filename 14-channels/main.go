@@ -1,12 +1,20 @@
 package main
 
+import "fmt"
+
 func main() {
+
+	ch := make(chan int)
 
 	go func(a, b int) {
 		sum := a + b
 
-	}(1, 2)
+		ch <- sum
 
+	}(4, 2)
+
+	r := <-ch
 	// TODO: get the value computed from goroutine
-	// fmt.Printf("computed value %v\n", sum)
+
+	fmt.Printf("computed value %v\n", r)
 }
