@@ -19,12 +19,12 @@ func main() {
 }
 
 func processRequest(ctx context.Context, userid string) {
-
+	// Created new context using parent context
 	// send userID information to checkMemberShipStatus from database lookup.
-	vctx := context.WithValue(ctx, userIDKey("userIDKey"), userid)
+	ctxv := context.WithValue(ctx, userIDKey("userIDKey"), userid)
 
-	ch := checkMemberShipStatus(vctx)
-	status := <-ch
+	status := checkMemberShipStatus(ctxv)
+
 	fmt.Printf("membership status of userid : %s : %v\n", userid, status)
 }
 
@@ -32,14 +32,9 @@ func processRequest(ctx context.Context, userid string) {
 // extracts the user id information from context.
 // spins a goroutine to do database lookup
 // sends the result on the returned channel.
-func checkMemberShipStatus(ctx context.Context) <-chan bool {
-	ch := make(chan bool)
-	go func() {
-		defer close(ch)
-		// do some database lookup
-		userid := ctx.Value(userIDKey("userIDKey")).(string)
-		status := db[userid]
-		ch <- status
-	}()
-	return ch
+func checkMemberShipStatus(ctx context.Context) bool {
+	userid := ctx.Value(userIDKey("userIDKey")).(string)
+	status := db[userid]
+
+	return status
 }
