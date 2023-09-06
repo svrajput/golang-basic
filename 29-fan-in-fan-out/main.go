@@ -56,17 +56,19 @@ func merge(cs ...<-chan int) <-chan int {
 
 func main() {
 
-	// stage 1
-	in := generator(2, 3)
+	// stage 1 - Fan In
+	in := generator(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
 
-	// stage 2
+	// stage 2 - Fan out
 	ch1 := square(in)
 
-	// stage 2
+	// stage 2   Fan out
 	ch2 := square(in)
 
+	// stage 3 - merge output of all channels. - Fan In
 	output := merge(ch1, ch2)
 
+	// stage 4 - print values
 	for n := range output {
 		fmt.Println("value received :", n)
 	}
