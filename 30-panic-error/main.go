@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime/debug"
 )
 
 func panicTracer() {
@@ -9,7 +10,8 @@ func panicTracer() {
 	r := recover()
 
 	if r != nil {
-		fmt.Println(" Inside panic tracer ")
+		fmt.Println(" Inside panic tracer ", r)
+		debug.PrintStack()
 	}
 }
 
